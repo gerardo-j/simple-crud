@@ -8,6 +8,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const message = req.body.message;
+  console.log(req.body);
+
   if (!message) {
     res.status(400).json({ message: 'Provide a message' })
     return
@@ -18,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const insertResult = await collection.insertOne({ message });
-    res.status(200).json({ insertResult })
+    res.status(200).json(insertResult)
   } catch (error) {
     res.status(400).json({ message: 'Something went wrong' })
   }

@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const findResult = await collection.find({}).toArray();
-    res.status(200).json({ findResult })
+    res.status(200).json(findResult)
   } catch (error) {
     res.status(400).json({ message: 'Something went wrong' })
   }
